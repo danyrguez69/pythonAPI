@@ -1,10 +1,12 @@
-from flask import Flask
-from flask import request
+from flask import Flask, request, jsonify, render_template
+from flask_cors import CORS
 import pandas as pd
 import joblib
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 app = Flask(__name__)
+CORS(app)
+
 
 @app.route('/predice', methods=['POST'])
 def predict():
@@ -16,9 +18,9 @@ def predict():
     classifier = joblib.load('classifier.pkl')
     X = vectorizer.transform(query).toarray()
     prediction = classifier.predict(X)
-    return f'El Review enviado es {prediction[0]}'
+    return jsonify(f'El Review enviado es {prediction[0]}')
    
 
 
 if __name__ == "__main__":
-    app.run(port=443, debug=False)
+    app.run(host='0.0.0.0',port=808, debug=True)
