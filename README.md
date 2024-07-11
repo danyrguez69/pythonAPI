@@ -72,10 +72,13 @@ Para consumir la API desde otro cliente (por ejemplo, Postman o un script Python
 
 ```bash
 curl -X POST http://python.taskingweb.cl:808/predice -H "Content-Type: application/json" -d '{"Processed_Review": "love game"}'
+```
 
 ### Ejemplo en interfaz visual (solo funciona por el protocolo no seguro HTTP por temas de certificado)
+
 ```bash
 http://python.taskingweb.cl/'
+```
 
 
 
